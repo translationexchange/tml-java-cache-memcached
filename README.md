@@ -2,7 +2,7 @@
   <img src="https://raw.github.com/tr8n/tr8n/master/doc/screenshots/tr8nlogo.png">
 </p>
 
-Memcached Cache Adapter for Tr8n for Java
+Tr8n Memcached Adapter
 ==================
 
 This cache adapter allows you to cache Tr8n data in Memcached server. 
