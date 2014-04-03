@@ -76,12 +76,6 @@ public class Memcached extends Cache {
 		return getVersion() + "_" + key;
 	}
 
-	private int getTimeout() {
-		if (getConfig().get("timeout") == null) 
-			return 0;
-		return (Integer) getConfig().get("timeout");
-	}
-	
 	@Override
 	public Object fetch(String key, Map<String, Object> options) {
 		if (isInlineMode(options)) return null;
