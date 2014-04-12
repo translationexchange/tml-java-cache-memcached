@@ -4,6 +4,7 @@
 
 Tr8n Memcached Adapter
 ==================
+[![Project status](http://stillmaintained.com/tr8n/tr8n_java_cache_memcached.png)](http://stillmaintained.com/tr8n/tr8n_java_cache_memcached.png)
 
 This cache adapter allows you to cache Tr8n data in Memcached server. 
 
