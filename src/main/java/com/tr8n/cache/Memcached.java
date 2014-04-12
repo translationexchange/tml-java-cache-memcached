@@ -27,10 +27,10 @@ import java.util.Map;
 import net.spy.memcached.AddrUtil;
 import net.spy.memcached.MemcachedClient;
 
-import com.tr8n.core.Cache;
 import com.tr8n.core.Tr8n;
+import com.tr8n.core.cache.CacheAdapter;
 
-public class Memcached extends Cache {
+public class Memcached extends CacheAdapter {
 	MemcachedClient client;
 	Integer version;
 	
@@ -76,7 +76,6 @@ public class Memcached extends Cache {
 		return getVersion() + "_" + key;
 	}
 
-	@Override
 	public Object fetch(String key, Map<String, Object> options) {
 		if (isInlineMode(options)) return null;
 		
@@ -88,7 +87,6 @@ public class Memcached extends Cache {
 		}
 	}
 
-	@Override
 	public void store(String key, Object data, Map<String, Object> options) {
 		if (isInlineMode(options)) return;
 
@@ -99,7 +97,6 @@ public class Memcached extends Cache {
 		}
 	}
 
-	@Override
 	public void delete(String key, Map<String, Object> options) {
 		try {
 			getMemcachedClient().delete(getVersionedKey(key));
@@ -108,4 +105,8 @@ public class Memcached extends Cache {
 		}
 	}
 
+    public void reset() {
+    	incrementVersion();
+    }
+	
 }
