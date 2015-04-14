@@ -2,25 +2,25 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.tr8nhub</groupId>
+  <groupId>com.translationexchange</groupId>
   <artifactId>cache-memcached</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.1</version>
   <packaging>jar</packaging>
 
-  <name>tr8n-cache-memcached</name>
-  <description>Memcached adapter for Tr8n SDKs</description>
-  <url>https://github.com/tr8n/tr8n_java_cache_memcached</url>
+  <name>cache-memcached</name>
+  <description>Memcached adapter for TML</description>
+  <url>https://github.com/translationexchange/tr8n_java_cache_memcached</url>
   <inceptionYear>2014</inceptionYear>
 
   <organization>
-    <name>Tr8nHub</name>
-    <url>https://tr8nhub.com</url>
+    <name>Translation Exchange, Inc</name>
+    <url>http://translationexchange.com</url>
   </organization>
 
   <developers>
     <developer>
       <name>Michael Berkovich</name>
-      <email>michael@tr8nhub.com</email>
+      <email>michael@translationexchange.com</email>
     </developer>
   </developers>
 
@@ -46,9 +46,9 @@
   </distributionManagement>
   
   <scm>
-    <connection>scm:git:git://github.com/tr8n/tr8n_java_cache_memcached.git</connection>
-    <developerConnection>scm:git:git://github.com/tr8n/tr8n_java_cache_memcached.git</developerConnection>
-    <url>https://github.com/tr8n/tr8n_java_cache_memcached</url>
+    <connection>scm:git:git://github.com/translationexchange/tml-java-cache-memcached.git</connection>
+    <developerConnection>scm:git:git://github.com/translationexchange/tml-java-cache-memcached.git</developerConnection>
+    <url>https://github.com/translationexchange/tml-java-cache-memcached</url>
   </scm>
 
   <dependencies>
@@ -59,9 +59,9 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.tr8nhub</groupId>
-      <artifactId>core</artifactId>
-      <version>0.1.0</version>
+      <groupId>com.translationexchange</groupId>
+      <artifactId>tml</artifactId>
+      <version>0.2.1</version>
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
