@@ -15,7 +15,7 @@ Add the following dependency to your pom.xml:
 ```xml
 <dependency>
   <groupId>com.translationexchange</groupId>
-  <artifactId>cache-memcached</artifactId>
+  <artifactId>tml-memcached</artifactId>
   <version>0.2.1</version>
 </dependency>
 ```

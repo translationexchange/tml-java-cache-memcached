@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.translationexchange</groupId>
-  <artifactId>cache-memcached</artifactId>
+  <artifactId>tml-memcached</artifactId>
   <version>0.2.1</version>
   <packaging>jar</packaging>
 
-  <name>cache-memcached</name>
+  <name>tml-memcached</name>
   <description>Memcached adapter for TML</description>
   <url>https://github.com/translationexchange/tr8n_java_cache_memcached</url>
   <inceptionYear>2014</inceptionYear>
