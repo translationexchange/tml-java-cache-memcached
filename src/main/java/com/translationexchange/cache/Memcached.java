@@ -41,7 +41,6 @@ import com.translationexchange.core.cache.CacheAdapter;
 
 public class Memcached extends CacheAdapter {
 	MemcachedClient client;
-	Integer version;
 	
 	public Memcached(Map<String, Object> config) {
 		super(config);
@@ -49,47 +48,18 @@ public class Memcached extends CacheAdapter {
 
 	private MemcachedClient getMemcachedClient() throws Exception {
 		if (client == null) {
-			client = new MemcachedClient(AddrUtil.getAddresses((String)getConfig().get("host")));
+			client = new MemcachedClient(AddrUtil.getAddresses((String) getConfig().get("host")));
 		}
 		
 		return client;
 	}
 
-	public Integer getVersion() {
-		try {
-			version = (Integer) getMemcachedClient().get("version");
-			if (version == null) {
-				version = (Integer) getConfig().get("version");
-				setVersion(version);
-			}
-		} catch (Exception ex) {
-			version = (Integer) getConfig().get("version");
-		}
-		
-		return version;
-	}
-	
-	public void setVersion(Integer version) {
-		try {
-			getMemcachedClient().set("version", 0, version);
-			this.version = version;
-		} catch (Exception ex) {
-		}
-	}
-
-	public void incrementVersion() {
-		setVersion(getVersion() + 1);
-	}
-	
-	protected String getVersionedKey(String key) {
-		return getVersion() + "_" + key;
-	}
-
 	public Object fetch(String key, Map<String, Object> options) {
-		if (isInlineMode(options)) return null;
-		
 		try {
-			return getMemcachedClient().get(getVersionedKey(key));
+			String versionedKey = getVersionedKey(key);
+			Object data = getMemcachedClient().get(versionedKey); 
+			debug("cach " + (data == null ? "miss" : "hit") + " " + versionedKey);
+			return data;
 		} catch (Exception ex) {
 			Tml.getLogger().logException("Failed to get a value from Memcached", ex);
 			return null;
@@ -97,8 +67,6 @@ public class Memcached extends CacheAdapter {
 	}
 
 	public void store(String key, Object data, Map<String, Object> options) {
-		if (isInlineMode(options)) return;
-
 		try {
 			getMemcachedClient().set(getVersionedKey(key), getTimeout(), data);
 		} catch (Exception ex) {
@@ -114,8 +82,4 @@ public class Memcached extends CacheAdapter {
 		}
 	}
 
-    public void reset() {
-    	incrementVersion();
-    }
-	
 }
