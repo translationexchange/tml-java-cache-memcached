@@ -58,7 +58,7 @@ public class Memcached extends CacheAdapter {
 		try {
 			String versionedKey = getVersionedKey(key);
 			Object data = getMemcachedClient().get(versionedKey); 
-			debug("cach " + (data == null ? "miss" : "hit") + " " + versionedKey);
+			debug("cache " + (data == null ? "miss" : "hit") + " " + versionedKey);
 			return data;
 		} catch (Exception ex) {
 			Tml.getLogger().logException("Failed to get a value from Memcached", ex);
