@@ -9,7 +9,7 @@
 
   <name>tml-memcached</name>
   <description>Memcached adapter for TML</description>
-  <url>https://github.com/translationexchange/tr8n_java_cache_memcached</url>
+  <url>https://github.com/translationexchange/tml-java-cache-memcached</url>
   <inceptionYear>2014</inceptionYear>
 
   <organization>
