@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Translation Exchange, Inc. All rights reserved.
+ * Copyright (c) 2016 Translation Exchange, Inc. All rights reserved.
  *
  *  _______                  _       _   _             ______          _
  * |__   __|                | |     | | (_)           |  ____|        | |
@@ -42,10 +42,21 @@ import com.translationexchange.core.cache.CacheAdapter;
 public class Memcached extends CacheAdapter {
 	MemcachedClient client;
 	
+	/**
+	 * Memcached constructor
+	 * 
+	 * @param config
+	 */
 	public Memcached(Map<String, Object> config) {
 		super(config);
 	}
 
+	/**
+	 * Returns Memcache client
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
 	private MemcachedClient getMemcachedClient() throws Exception {
 		if (client == null) {
 			client = new MemcachedClient(AddrUtil.getAddresses((String) getConfig().get("host")));
@@ -54,11 +65,13 @@ public class Memcached extends CacheAdapter {
 		return client;
 	}
 
+	/**
+	 * Fetches from Memcache
+	 */
 	public Object fetch(String key, Map<String, Object> options) {
 		try {
-			String versionedKey = getVersionedKey(key);
-			Object data = getMemcachedClient().get(versionedKey); 
-			debug("cache " + (data == null ? "miss" : "hit") + " " + versionedKey);
+			Object data = getMemcachedClient().get(key); 
+			debug("cache " + (data == null ? "miss" : "hit") + " " + key);
 			return data;
 		} catch (Exception ex) {
 			Tml.getLogger().logException("Failed to get a value from Memcached", ex);
@@ -66,17 +79,25 @@ public class Memcached extends CacheAdapter {
 		}
 	}
 
+	/**
+	 * Stores in Memcache
+	 */
 	public void store(String key, Object data, Map<String, Object> options) {
 		try {
-			getMemcachedClient().set(getVersionedKey(key), getTimeout(), data);
+			debug("cache store " + key);
+			getMemcachedClient().set(key, 0, data);
 		} catch (Exception ex) {
 			Tml.getLogger().logException("Failed to store a value in Memcached", ex);
 		}
 	}
 
+	/**
+	 * Deletes from Memcache
+	 */
 	public void delete(String key, Map<String, Object> options) {
 		try {
-			getMemcachedClient().delete(getVersionedKey(key));
+			debug("cache delete " + key);
+			getMemcachedClient().delete(key);
 		} catch (Exception ex) {
 			Tml.getLogger().logException("Failed to delete a value from Memcached", ex);
 		}
