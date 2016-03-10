@@ -3,7 +3,7 @@
 
   <groupId>com.translationexchange</groupId>
   <artifactId>tml-memcached</artifactId>
-  <version>0.2.3-SNAPSHOT</version>
+  <version>0.2.3</version>
   <packaging>jar</packaging>
 
   <name>tml-memcached</name>
@@ -46,7 +46,7 @@
     <connection>scm:git:https://github.com/translationexchange/tml-java-cache-memcached.git</connection>
     <developerConnection>scm:git:https://github.com/translationexchange/tml-java-cache-memcached.git</developerConnection>
     <url>https://github.com/translationexchange/tml-java-cache-memcached</url>
-    <tag>HEAD</tag>
+    <tag>tml-memcached-0.2.3</tag>
   </scm>
 
   <properties>
