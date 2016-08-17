@@ -70,7 +70,7 @@ public class Memcached extends CacheAdapter {
 	 */
 	public Object fetch(String key, Map<String, Object> options) {
 		try {
-			Object data = getMemcachedClient().get(key); 
+			Object data = getMemcachedClient().get(getVersionedKey(key, options)); 
 			debug("cache " + (data == null ? "miss" : "hit") + " " + key);
 			return data;
 		} catch (Exception ex) {
@@ -85,7 +85,7 @@ public class Memcached extends CacheAdapter {
 	public void store(String key, Object data, Map<String, Object> options) {
 		try {
 			debug("cache store " + key);
-			getMemcachedClient().set(key, 0, data);
+			getMemcachedClient().set(getVersionedKey(key, options), 0, data);
 		} catch (Exception ex) {
 			Tml.getLogger().logException("Failed to store a value in Memcached", ex);
 		}
@@ -97,7 +97,7 @@ public class Memcached extends CacheAdapter {
 	public void delete(String key, Map<String, Object> options) {
 		try {
 			debug("cache delete " + key);
-			getMemcachedClient().delete(key);
+			getMemcachedClient().delete(getVersionedKey(key, options));
 		} catch (Exception ex) {
 			Tml.getLogger().logException("Failed to delete a value from Memcached", ex);
 		}
