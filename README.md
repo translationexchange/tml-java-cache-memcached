@@ -4,7 +4,7 @@
 
 TML Memcached Adapter
 ==================
-This cache adapter allows you to cache TML data using Memcached server. 
+This cache adapter allows you to cache TML data using Memcached server.
 
 
 Installation
@@ -16,7 +16,7 @@ Add the following dependency to your pom.xml:
 <dependency>
   <groupId>com.translationexchange</groupId>
   <artifactId>tml-memcached</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.3</version>
 </dependency>
 ```
 
